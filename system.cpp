@@ -28,7 +28,7 @@ bool System::overlap(int i){
 }
 
 void System::step() {
-    for (int i; i<disks.size(); ++i) 
+    for (int i=0; i<disks.size(); ++i) 
     {
         int selected_disk = std::rand() % disks.size();
         double oldx = disks[selected_disk].x;
@@ -57,7 +57,7 @@ void System::enforceBoundaries(Disk & disk) {
         std::uniform_real_distribution<double> distribution(min, max);
         return distribution(gen);
     }
-    
+
 void System::save(const std::string &filename){
     // save state of disks to file
     std::ofstream outFile(filename);
