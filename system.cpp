@@ -60,12 +60,13 @@ void System::enforceBoundaries(Disk & disk) {
 void System::save(const std::string &filename){
     // save state of disks to file
     std::ofstream outFile(filename);
-    outFile<<disks.size()<<std::endl;
-    outFile<<"Comment"<<std::endl;
-    for (Disk& disk : disks) {
-      outFile<<"A "<<disk.x<<" "<<disk.y<<" "<<disk.radius<<std::endl;
-
+    if (!outFile) {
+        std::cerr << "Error: Unable to open file " << filename << std::endl;
+        return;
     }
-    outFile.close();
-    
+
+    outFile << disks.size() << "\nComment\n";
+    for (const Disk& disk : disks) {
+        outFile << "A " << disk.x << " " << disk.y << " " << disk.radius << "\n";
+    }
 }
