@@ -7,15 +7,24 @@ This project simulates the random motion of hard disks within a square box. Each
 ## Main Modifications
 
 Header Files
+
     Reconstructed disk.h and system.h to replace the destroyed headers.
     Added header to their respective files.
+    
 Source Code Corrections
+
     Amended missing code in system.cpp and disk.cpp (e.g., distance calculation, uniform random generation, boundary checks).
+
 Optimizations
+
     Refined the overlap check using <algorithm> and std::any_of.
+    
     Enhanced enforceBoundaries using std::clamp.
+    
     Added error catching when saving configurations.
+    
 Makefile
+
     Introduced a Makefile to streamline compilation (make, make clean).
 
 ## Git Navigation
