@@ -1,5 +1,6 @@
 #include <fstream>
-#include  "system.h"
+#include <algorithm>
+#include "system.h"
 #include "disk.h"
 
 System::System(int N, double displacement,double radius, double boxSize, int seed) {
@@ -20,12 +21,11 @@ System::System(int N, double displacement,double radius, double boxSize, int see
     }   
 
 bool System::overlap(int i){
-    for (int j = 0; j < disks.size(); ++j) {
-        if (i!=j && disks[i].distance(disks[j]) < (disks[i].radius + disks[j].radius) ) {
-            return true;
-        }
+    Disk & d1 = disks[i];
+    return std::any_of(disks.begin(), disks.end(), [&](Disk & d2) {
+        return &d1 != &d2 && d1.distance(d2) < (d1.radius + d2.radius);
     }
-    return false;
+    );
 }
 
 void System::step() {
