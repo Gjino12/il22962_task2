@@ -48,10 +48,8 @@ void System::step() {
     }
 }
 void System::enforceBoundaries(Disk & disk) {
-        if (disk.x < 0) disk.x = 0;
-        if (disk.x > boxSize) disk.x = boxSize;
-        if (disk.y < 0) disk.y = 0;
-        if (disk.y > boxSize) disk.y = boxSize;
+        disk.x = std::clamp(disk.x, 0.0, boxSize);
+        disk.y = std::clamp(disk.y, 0.0, boxSize);
     }
 
     double System::uniform (double min,double max){
