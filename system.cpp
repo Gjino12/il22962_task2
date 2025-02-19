@@ -10,6 +10,7 @@ System::System(int N, double displacement,double radius, double boxSize, int see
         gen = std::mt19937(seed);
         
         int nSide = static_cast<int>(boxSize/ (2*radius));
+        disks.reserve(N);
 
         for (int i = 0; i < nSide && disks.size() < N; ++i) {
             for (int j = 0; j < nSide && disks.size() < N; ++j) {
