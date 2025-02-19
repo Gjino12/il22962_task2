@@ -53,8 +53,11 @@ void System::enforceBoundaries(Disk & disk) {
         if (disk.y > boxSize) disk.y = boxSize;
     }
 
-// HINT: PROVIDE A DEFINITION FOR A MEMBER FUNCTION OF THE SYSTEM CLASS CALLED uniform
-
+    double System::uniform (double min,double max){
+        std::uniform_real_distribution<double> distribution(min, max);
+        return distribution(gen);
+    }
+    
 void System::save(const std::string &filename){
     // save state of disks to file
     std::ofstream outFile(filename);
